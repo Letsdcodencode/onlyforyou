@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f8c8d8">
+<title>Happy Birthday Muskan ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== COLOURS (edit here) ===== */
+:root{
+  --bg1:#fde8ef; --bg2:#f9d0df; --bg3:#f4b9cf;
+  --ink:#7a2f4b; --soft:#a1506d; --accent:#d6547f; --glow:rgba(214,84,127,.3);
+  --script:'Dancing Script','Sriracha',cursive; --body:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+}
+/* Dark mode stays pink */
+@media (prefers-color-scheme:dark){:root{--bg1:#6b2543;--bg2:#5a1d38;--bg3:#4a1730;--ink:#ffe4ee;--soft:#f5bdd1;--accent:#ff8fb3;--glow:rgba(255,143,179,.28)}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;overscroll-behavior:none}
+body{font-family:var(--body);color:var(--ink);line-height:1.7;background:var(--bg2);touch-action:manipulation}
+button{font:inherit;color:inherit;border:none;background:none;cursor:pointer;touch-action:manipulation}
+.canvas{position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(120% 60% at 50% 0%,var(--bg1),transparent 70%),
+  radial-gradient(90% 50% at 100% 100%,var(--bg3),transparent 70%),
+  linear-gradient(180deg,var(--bg1),var(--bg2) 55%,var(--bg3))}
+
+/* ===== BACKGROUND HEARTS + BALLOONS (decorative) ===== */
+.deco{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.heart{position:absolute;pointer-events:none;animation:drift var(--d) ease-in-out infinite alternate,pulse calc(var(--d)*.6) ease-in-out infinite alternate;animation-delay:var(--dl)}
+@keyframes drift{from{transform:translate3d(0,0,0) rotate(-8deg)}to{transform:translate3d(var(--x),-34px,0) rotate(8deg)}}
+@keyframes pulse{from{scale:.9}to{scale:1.1}}
+.balloon{position:absolute;top:calc(env(safe-area-inset-top,0px) + 6px);width:clamp(44px,12vw,64px);transform-origin:50% 100%;animation:sway 6s ease-in-out infinite alternate;z-index:1}
+.balloon.l{left:10px}.balloon.r{right:10px;animation-delay:-3s}
+@keyframes sway{from{transform:rotate(-5deg)}to{transform:rotate(5deg) translateY(8px)}}
+
+/* ===== SCENES ===== */
+#stage{position:fixed;inset:0;max-width:480px;margin:0 auto}
+.scene{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:calc(env(safe-area-inset-top,0px) + 84px) 28px calc(env(safe-area-inset-bottom,0px) + 40px);
+  overflow-y:auto;opacity:0;visibility:hidden;transform:scale(.97);transition:opacity 1s ease,transform 1s ease,visibility 1s}
+.scene.on{opacity:1;visibility:visible;transform:none}
+.scene>*{flex-shrink:0}
+h1,h2{font-family:var(--script);font-weight:700;color:var(--ink);text-shadow:0 6px 26px var(--glow);line-height:1.15}
+h2{font-size:clamp(34px,10vw,46px)}
+.sub{color:var(--soft);font-weight:300;font-size:17px;margin-top:12px}
+.btn{margin-top:32px;padding:16px 38px;border-radius:999px;font-size:18px;font-weight:500;color:#fff;
+  background:linear-gradient(135deg,#ec7fa2,#d6547f);box-shadow:0 12px 30px var(--glow);animation:glow 2.8s ease-in-out infinite}
+@keyframes glow{50%{box-shadow:0 14px 42px rgba(214,84,127,.5);transform:scale(1.04)}}
+.later{opacity:0;pointer-events:none;transition:opacity 1s}.later.show{opacity:1;pointer-events:auto}
+.in{animation:fadeup 1.4s ease both}
+@keyframes fadeup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes float{50%{transform:translateY(-12px)}}
+
+/* Scene 1 */
+.env{font-size:clamp(60px,18vw,84px);animation:float 3.6s ease-in-out infinite;filter:drop-shadow(0 12px 22px var(--glow))}
+.s1 h2{margin-top:10px}
+
+/* Scene 2 – title letters */
+.title{font-size:clamp(50px,15vw,74px)}
+.title .w{display:inline-block;margin:0 .12em}
+.title .c{display:inline-block;opacity:0;animation:pop .9s cubic-bezier(.2,1.4,.4,1) forwards;animation-delay:calc(var(--i)*.09s + .5s)}
+@keyframes pop{from{opacity:0;transform:translateY(30px) scale(.4)}to{opacity:1;transform:none}}
+.name{display:block;color:var(--accent);font-size:1.25em;animation:float 4s ease-in-out infinite 3s}
+
+/* Scene 3 – dome photo */
+.dome{width:min(76%,320px);aspect-ratio:3/4;object-fit:cover;object-position:50% 38%;
+  border-radius:50% 50% 32px 32px / 37.5% 37.5% 32px 32px;box-shadow:0 20px 60px var(--glow),0 0 90px rgba(244,150,185,.35)}
+.s3.on .dome{animation:reveal 2s cubic-bezier(.2,.9,.3,1) both,float 6s ease-in-out 2s infinite}
+@keyframes reveal{from{opacity:0;transform:scale(.6);filter:blur(10px)}to{opacity:1;transform:none;filter:none}}
+.cap{font-family:var(--script);font-size:28px;color:var(--soft);margin-top:20px}
+
+/* Scene 4 – letter lines */
+.line{font-size:17px;margin-bottom:16px;opacity:0;transform:translateY(14px);transition:opacity 1.4s,transform 1.4s}
+.line.show{opacity:1;transform:none}
+.line.big{font-family:var(--script);font-size:32px;color:var(--accent)}
+
+/* Scene 5 – heart */
+#bigHeart{font-size:clamp(120px,38vw,170px);line-height:1;color:var(--accent);filter:drop-shadow(0 14px 26px var(--glow));animation:beat 1.8s ease-in-out infinite;margin:10px 0}
+@keyframes beat{50%{transform:scale(1.08)}}
+#bigHeart.tap{animation:none;transform:scale(1.22);transition:transform .15s}
+.dots{display:flex;gap:10px;justify-content:center;height:14px}
+.dots i{width:10px;height:10px;border-radius:50%;background:var(--soft);opacity:.35;transition:.4s}.dots i.f{background:var(--accent);opacity:1;transform:scale(1.3)}
+
+/* Scene 6 – CSS gift */
+#gift{position:relative;width:150px;height:150px;margin:62px 0 6px;animation:wobble 3.4s ease-in-out infinite;filter:drop-shadow(0 16px 26px var(--glow))}
+@keyframes wobble{0%,100%{transform:rotate(0)}10%{transform:rotate(-5deg)}20%{transform:rotate(5deg)}30%{transform:rotate(0)}}
+#gift .box{position:absolute;left:15px;bottom:0;width:120px;height:92px;border-radius:0 0 12px 12px;background:linear-gradient(#f28bad,#dd6790)}
+#gift .lid{position:absolute;left:8px;top:24px;width:134px;height:38px;border-radius:10px;background:linear-gradient(#f7a3bf,#ea7b9f);transition:transform 1s cubic-bezier(.3,1.4,.5,1)}
+#gift .box::before,#gift .lid::before{content:"";position:absolute;left:50%;width:22px;margin-left:-11px;top:0;bottom:0;background:#fff3f7;opacity:.9}
+#gift .lid::after{content:"🎀";position:absolute;left:50%;top:-30px;font-size:34px;transform:translateX(-50%)}
+#gift.open{animation:none}#gift.open .lid{transform:translateY(-46px) rotate(-16deg)}
+#gift .glow{position:absolute;left:30px;top:40px;width:90px;height:60px;border-radius:50%;background:radial-gradient(#fff,transparent 70%);opacity:0;transition:opacity 1s}
+#gift.open .glow{opacity:.9}
+#secret{max-height:0;opacity:0;overflow:hidden;transition:max-height 1.4s,opacity 1.6s .3s}
+#secret.on{max-height:300px;opacity:1;margin-top:16px}
+#secret .big{font-family:var(--script);font-size:32px;color:var(--accent);line-height:1.3}
+
+/* Scene 7 – final */
+.final .fin{font-size:clamp(46px,14vw,68px);margin-top:18px}
+.replay{margin-top:26px;color:var(--soft);font-size:15px;padding:10px 18px;text-decoration:underline;text-underline-offset:4px}
+
+/* ===== MUSIC + TOAST + EFFECTS ===== */
+#music{position:fixed;z-index:60;right:calc(env(safe-area-inset-right,0px) + 16px);bottom:calc(env(safe-area-inset-bottom,0px) + 18px);width:52px;height:52px;border-radius:50%;font-size:22px;display:none;align-items:center;justify-content:center;background:rgba(255,255,255,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 8px 24px var(--glow)}
+#music.show{display:flex}#music.playing{animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#toast{position:fixed;z-index:60;left:50%;transform:translateX(-50%);bottom:calc(env(safe-area-inset-bottom,0px) + 82px);font-size:13px;padding:8px 18px;border-radius:999px;background:rgba(255,255,255,.4);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);opacity:0;transition:opacity .5s;pointer-events:none;white-space:nowrap}
+#toast.on{opacity:1}
+#confetti{position:fixed;inset:0;z-index:45;pointer-events:none}
+.burst{position:fixed;z-index:46;pointer-events:none;color:var(--accent);line-height:1}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+<div class="canvas"></div>
+<div class="deco" id="deco" aria-hidden="true">
+  <!-- exactly two light-pink balloons -->
+  <svg class="balloon l" viewBox="0 0 60 110"><defs><radialGradient id="bg" cx="35%" cy="30%"><stop offset="0" stop-color="#fff4f8"/><stop offset="1" stop-color="#f6b5cb"/></radialGradient></defs><path d="M30 4C14 4 5 17 5 32c0 16 12 30 25 33 13-3 25-17 25-33C55 17 46 4 30 4z" fill="url(#bg)"/><path d="M27 65l3 6 3-6z" fill="#f2a2bd"/><path d="M30 71c-6 10 6 18 0 38" stroke="#e9a9bf" stroke-width="1.2" fill="none"/></svg>
+  <svg class="balloon r" viewBox="0 0 60 110"><path d="M30 4C14 4 5 17 5 32c0 16 12 30 25 33 13-3 25-17 25-33C55 17 46 4 30 4z" fill="url(#bg)"/><path d="M27 65l3 6 3-6z" fill="#f2a2bd"/><path d="M30 71c6 10-6 18 0 38" stroke="#e9a9bf" stroke-width="1.2" fill="none"/></svg>
+</div>
+<canvas id="confetti"></canvas>
+<button id="music" aria-label="Play or pause music">🎵</button>
+<div id="toast"></div>
+
+<div id="stage">
+  <!-- SCENE 1: opening -->
+  <section class="scene s1 on" id="sc0">
+    <div class="env">💌</div>
+    <h2 class="in" style="animation-delay:.4s">I made something for you… ❤️</h2>
+    <p class="sub in" style="animation-delay:1.8s">There's a little surprise waiting for you…</p>
+    <button class="btn in" id="openBtn" style="animation-delay:3s">Tap to open 🎁</button>
+  </section>
+
+  <!-- SCENE 2: birthday reveal -->
+  <section class="scene" id="sc1">
+    <h1 class="title" id="title"></h1>
+    <p class="sub later" id="t2">Today, the whole world gets a little brighter. ✨</p>
+    <button class="btn later" data-next>Next 💗</button>
+  </section>
+
+  <!-- SCENE 3: photo (path: images/muskan.jpg) -->
+  <section class="scene s3" id="sc2">
+    <img class="dome" src="images/muskan.jpg" alt="Muskan">
+    <p class="cap">this smile, though… 🥺</p>
+    <button class="btn" data-next>Next 💗</button>
+  </section>
+
+  <!-- SCENE 4: letter, revealed line by line -->
+  <section class="scene" id="sc3">
+    <div id="letter"></div>
+    <button class="btn later" data-next>Continue 💗</button>
+  </section>
+
+  <!-- SCENE 5: tap the heart -->
+  <section class="scene" id="sc4">
+    <h2>Tap the heart 💗</h2>
+    <button id="bigHeart" aria-label="Heart">♥&#xFE0E;</button>
+    <div class="dots"><i></i><i></i><i></i></div>
+    <p class="sub later" id="heartMsg">Every tap is a little thank you. You've got my whole heart. 🥹</p>
+    <button class="btn later" data-next>Next 💗</button>
+  </section>
+
+  <!-- SCENE 6: gift -->
+  <section class="scene" id="sc5">
+    <h2>A gift for you 🎁</h2>
+    <div id="gift" role="button" aria-label="Open the gift"><div class="glow"></div><div class="box"></div><div class="lid"></div></div>
+    <p class="sub" id="giftHint">Tap to open</p>
+    <div id="secret"><p class="big">You are my favourite person.</p><p class="sub">Whatever this year brings, I'll be right there cheering for you.</p></div>
+    <button class="btn later" data-next>One more thing… ✨</button>
+  </section>
+
+  <!-- SCENE 7: finale -->
+  <section class="scene final" id="sc6">
+    <p class="sub later" id="f1">Thank you for being you.</p>
+    <p class="sub later" id="f2">Make a wish, and hold it close. 🕯️</p>
+    <h1 class="fin later" id="f3">Happy Birthday,<br>Muskan ❤️</h1>
+    <button class="replay later" id="replay">Watch again 🔁</button>
+  </section>
+</div>
+
+<script>
+/* ===== EDITABLE TEXT ===== */
+const LETTER=[
+  "Muskan…",
+  "I tried writing this a few times and kept deleting it, because nothing sounded good enough.",
+  "So here's the simple version.",
+  "You make ordinary days feel softer. Your smile is honestly my favourite notification.",
+  "Thank you for every laugh, every random chat, and every time you made me feel at home.",
+  "I hope this year gives you everything you've been quietly wishing for.",
+  "And I hope I get to be somewhere in it. 💗"
+];
+const MUSIC_PATH='audio/birthday-song.mp3';
+
+/* ===== HELPERS ===== */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const show=el=>el.classList.add('show');
+
+/* Subtle background hearts (14–18 only) */
+(function(){const d=$('#deco'),n=innerWidth<600?14:18,c=['#f28bad','#e46b95','#f7a9c4','#d6547f','#fbc1d5'];
+for(let i=0;i<n;i++){const h=document.createElement('span');h.className='heart';h.textContent='♥\uFE0E';const big=i%6==0;
+h.style.cssText=`left:${Math.random()*94}%;top:${Math.random()*92}%;font-size:${big?30+Math.random()*14:11+Math.random()*10}px;color:${c[i%5]};opacity:${big?.14:.2+Math.random()*.12};--d:${9+Math.random()*9}s;--dl:${-Math.random()*10}s;--x:${(Math.random()*30-15)|0}px`;d.appendChild(h)}})();
+
+/* Heart burst (small DOM count, WAAPI) */
+function burst(x,y,n=10){for(let i=0;i<n;i++){const e=document.createElement('span');e.className='burst';e.textContent='♥\uFE0E';
+e.style.cssText=`left:${x}px;top:${y}px;font-size:${12+Math.random()*16}px;color:${['#f28bad','#d6547f','#fbc1d5','#ff8fb3'][i%4]}`;document.body.appendChild(e);
+const a=Math.random()*Math.PI*2,r=50+Math.random()*80;
+e.animate([{transform:'translate(-50%,-50%) scale(.4)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*r}px),calc(-50% + ${Math.sin(a)*r-40}px)) scale(1.2)`,opacity:0}],{duration:1300,easing:'ease-out'}).onfinish=()=>e.remove()}}
+const center=el=>{const r=el.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height/2]};
+
+/* Confetti (canvas, ~70 pieces, auto-stops) */
+const cv=$('#confetti'),cx=cv.getContext('2d');let parts=[],raf;
+function fit(){cv.width=innerWidth;cv.height=innerHeight}fit();addEventListener('resize',fit);
+function confetti(){const cols=['#f28bad','#fbc1d5','#fff4f8','#d6547f','#f7d488'];
+parts=Array.from({length:70},()=>({x:innerWidth/2+(Math.random()*80-40),y:innerHeight*.4,vx:Math.random()*9-4.5,vy:-(Math.random()*9+3),s:5+Math.random()*6,r:Math.random()*6,vr:Math.random()*.2-.1,c:cols[(Math.random()*5)|0]}));
+let t=0;cancelAnimationFrame(raf);(function f(){cx.clearRect(0,0,cv.width,cv.height);parts.forEach(p=>{p.vy+=.13;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;cx.save();cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.globalAlpha=Math.max(0,1-t/210);cx.fillRect(-p.s/2,-p.s/3,p.s,p.s*.6);cx.restore()});
+if(++t<210)raf=requestAnimationFrame(f);else cx.clearRect(0,0,cv.width,cv.height)})()}
+
+/* ===== MUSIC ===== */
+const audio=new Audio(MUSIC_PATH);audio.loop=true;audio.preload='auto';
+const mb=$('#music'),toast=$('#toast');let tt;
+const say=(m,ms=3500)=>{toast.textContent=m;toast.classList.add('on');clearTimeout(tt);if(ms)tt=setTimeout(()=>toast.classList.remove('on'),ms)};
+const playing=p=>mb.classList.toggle('playing',p);
+const tryPlay=()=>audio.play().then(()=>{playing(true);toast.classList.remove('on')}).catch(()=>{playing(false);say('Tap 🎵 to try again',6000)});
+audio.addEventListener('waiting',()=>say('Loading music… 🎶',0));
+audio.addEventListener('playing',()=>toast.classList.remove('on'));
+audio.addEventListener('error',()=>{playing(false);say('Tap 🎵 to try again',6000)});
+mb.onclick=()=>audio.paused?tryPlay():(audio.pause(),playing(false));
+
+/* ===== SCENE ENGINE ===== */
+const scenes=$$('.scene');let cur=0,token=0;
+const hooks=[null,scene2,null,scene4,scene5,null,scene7];
+function go(i){const my=++token;scenes[cur].classList.remove('on');cur=i;scenes[i].classList.add('on');
+  scenes[i].scrollTop=0;if(hooks[i])setTimeout(()=>{if(my===token)hooks[i](my)},500)}
+$$('[data-next]').forEach(b=>b.addEventListener('click',()=>go(cur+1)));
+
+/* Scene 1 → tap: music starts inside this handler */
+$('#openBtn').onclick=()=>{say('Loading music… 🎶',0);tryPlay();mb.classList.add('show');
+  const [x,y]=center($('#openBtn'));burst(x,y,12);go(1);confetti()};
+
+/* Scene 2: animated title */
+(function(){const t=$('#title');let i=0;
+[['Happy',0],['Birthday',0],['Muskan ❤️',1]].forEach(([w,nm])=>{const s=document.createElement('span');s.className=nm?'w name':'w';
+[...w].forEach(ch=>{const c=document.createElement('span');c.className='c';c.style.setProperty('--i',i++);c.textContent=ch==' '?'\u00A0':ch;s.appendChild(c)});t.appendChild(s);if(!nm)t.appendChild(document.createElement('wbr'))})})();
+async function scene2(my){await wait(2200);if(my!==token)return;show($('#t2'));burst(innerWidth/2,innerHeight*.4,14);await wait(1200);show($('#sc1 .btn'))}
+
+/* Scene 4: letter reveals line by line */
+async function scene4(my){const box=$('#letter');box.innerHTML='';$('#sc3 .btn').classList.remove('show');
+  for(let i=0;i<LETTER.length;i++){if(my!==token)return;const p=document.createElement('p');p.className='line'+(i==0||i==LETTER.length-1?' big':'');p.textContent=LETTER[i];box.appendChild(p);
+    await wait(60);p.classList.add('show');p.scrollIntoView({behavior:'smooth',block:'center'});await wait(2300)}
+  if(my===token)show($('#sc3 .btn'))}
+
+/* Scene 5: tap the heart 3 times */
+let taps=0;
+function scene5(){taps=0;$$('.dots i').forEach(d=>d.classList.remove('f'));$('#heartMsg').classList.remove('show');$('#sc4 .btn').classList.remove('show')}
+$('#bigHeart').onclick=e=>{if(taps>=3)return;const h=e.currentTarget;$$('.dots i')[taps].classList.add('f');taps++;
+  h.classList.add('tap');setTimeout(()=>h.classList.remove('tap'),160);const[x,y]=center(h);burst(x,y,taps==3?18:9);
+  if(taps==3){confetti();setTimeout(()=>{show($('#heartMsg'));setTimeout(()=>show($('#sc4 .btn')),1200)},700)}};
+
+/* Scene 6: gift */
+$('#gift').onclick=()=>{const g=$('#gift');if(g.classList.contains('open'))return;g.classList.add('open');$('#giftHint').style.display='none';
+  const[x,y]=center(g);burst(x,y-30,16);setTimeout(()=>$('#secret').classList.add('on'),600);setTimeout(()=>show($('#sc5 .btn')),2600)};
+
+/* Scene 7: final sequence */
+async function scene7(my){['#f1','#f2','#f3','.replay'].forEach(s=>$(s).classList.remove('show'));
+  await wait(300);if(my!==token)return;show($('#f1'));await wait(2200);if(my!==token)return;show($('#f2'));await wait(2600);if(my!==token)return;
+  show($('#f3'));confetti();burst(innerWidth/2,innerHeight*.45,20);await wait(1800);if(my!==token)return;confetti();show($('.replay'))}
+$('#replay').onclick=()=>{$('#gift').classList.remove('open');$('#secret').classList.remove('on');$('#giftHint').style.display='';$('#sc5 .btn').classList.remove('show');go(1)};
+</script>
+</body>
+</html>
